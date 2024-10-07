@@ -1,41 +1,28 @@
 import numpy as np
 from collections import Counter
-def euclideands(self,x1,x2):
-    return np.sqrt(sum((x1-x2)**2))
 
 
 class KNN:
     def __init__(self,k=3):
-        self.k = k
-
-
+        self.k = k        
     def fit(self,X,y):
-
         self.xtrain = X
         self.ytrain = y
-    
-
-
     def predct(self,X):
         predcts=[self._predct(x) for x in X]
         return predcts
-
-
     def _predct(self,x):
         dest = [self.euclideands(x,xtrain) for xtrain in self.xtrain]
         kees=np.argsort(dest)[:self.k]
         klabel= [self.ytrain[i] for i in kees]
         mostco = Counter(klabel).most_common(1)
         return mostco[0][0]
-    
-
-
     def euclideands(self,x1,x2):             
         return np.sqrt(sum((x1-x2)**2))
 
 
 
-
+print('----------------test---------------')
 # Simple 2D data test case
 X_train = np.array([[1, 2], [2, 3], [3, 4], [6, 8], [7, 9], [8, 8]])
 y_train = np.array([0, 0, 0, 1, 1, 1])
